@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+  --primary: #6366f1;
+  --secondary: #9333ea;
+  --bg: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  --glass: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+body { background: var(--bg); min-height: 100vh; color: var(--text); overflow-x: hidden; }
+
+.app-container { max-width: 800px; margin: 0 auto; padding: 3rem 1rem; display: flex; flex-direction: column; gap: 2rem; }
+
+.logo-text { 
+  font-size: 4rem; text-align: center; font-weight: 800; 
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.search-container {
+  display: flex; gap: 1rem; background: var(--glass); padding: 0.5rem; 
+  border-radius: 1.5rem; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.search-input { flex: 1; background: transparent; border: none; outline: none; color: white; padding: 0.8rem 1.2rem; font-size: 1.1rem; }
+.search-button { 
+  background: linear-gradient(to right, var(--primary), var(--secondary)); 
+  color: white; border: none; padding: 0 2rem; border-radius: 1rem; font-weight: 600; cursor: pointer;
+}
+
+.weather-card {
+  background: var(--glass); backdrop-filter: blur(16px); border: 1px solid var(--border);
+  border-radius: 2.5rem; padding: 2.5rem; display: flex; flex-direction: column; align-items: center;
+}
+
+.card-header h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.weather-icon { width: 150px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2)); }
+.condition-text { font-size: 1.5rem; color: var(--muted); }
+
+.temp-display { font-size: 8rem; font-weight: 800; background: linear-gradient(#fff, #94a3b8); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.temp-unit { font-size: 2rem; color: var(--accent); vertical-align: super; }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; width: 100%; max-width: 400px; margin-top: 2rem; }
+.stat-item { background: rgba(0, 0, 0, 0.2); padding: 1.5rem; border-radius: 1.5rem; text-align: center; }
+.stat-label { display: block; color: var(--muted); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+.stat-value { font-size: 1.2rem; font-weight: 600; }
+
+.forecast-container { background: var(--glass); border: 1px solid var(--border); border-radius: 2rem; padding: 2rem; margin-top: 1rem; }
+.forecast-title { text-align: center; margin-bottom: 1.5rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; }
+.forecast-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1rem; }
+.forecast-item { background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 1.2rem; display: flex; flex-direction: column; align-items: center; }
+.forecast-date { font-size: 0.8rem; color: var(--muted); }
+.forecast-temp { font-weight: 700; margin: 0.5rem 0; }
+
+.spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; margin: 2rem auto; animation: spin 1s linear infinite; }
+.error-message { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ff8a8a; padding: 1rem; border-radius: 1rem; text-align: center; }
+.empty-state { text-align: center; color: var(--muted); margin-top: 2rem; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.animate-fade-in { animation: fadeIn 0.5s ease-out; }
+.animate-slide-up { animation: slideUp 0.5s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 600px) {
+  .temp-display { font-size: 5rem; }
+  .logo-text { font-size: 3rem; }
+  .search-container { flex-direction: column; background: transparent; border: none; box-shadow: none; }
+  .search-input { background: var(--glass); border-radius: 1rem; margin-bottom: 0.5rem; }
+  .search-button { padding: 1rem; }
+  .forecast-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
